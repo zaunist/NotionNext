@@ -51,8 +51,6 @@ function BannerGroup(props) {
       className='flex flex-col justify-between flex-1 mr-2 max-w-[42rem]'>
       {/* 动图 */}
       <Banner {...props} />
-      {/* 导航分类 */}
-      <GroupMenu />
     </div>
   )
 }
