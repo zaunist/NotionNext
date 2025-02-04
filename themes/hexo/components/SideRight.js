@@ -13,18 +13,6 @@ import LatestPostsGroup from './LatestPostsGroup'
 import TagGroups from './TagGroups'
 
 const HexoRecentComments = dynamic(() => import('./HexoRecentComments'))
-const FaceBookPage = dynamic(
-  () => {
-    let facebook = <></>
-    try {
-      facebook = import('@/components/FacebookPage')
-    } catch (err) {
-      console.error(err)
-    }
-    return facebook
-  },
-  { ssr: false }
-)
 
 /**
  * Hexo主题右侧栏
@@ -99,7 +87,6 @@ export default function SideRight(props) {
           siteConfig('COMMENT_WALINE_RECENT') && <HexoRecentComments />}
 
         {rightAreaSlot}
-        <FaceBookPage />
         <Live2D />
       </div>
     </div>

@@ -13,18 +13,6 @@ import { useGlobal } from '@/lib/global'
 import Live2D from '@/components/Live2D'
 
 const HexoRecentComments = dynamic(() => import('./HexoRecentComments'))
-const FaceBookPage = dynamic(
-  () => {
-    let facebook = <></>
-    try {
-      facebook = import('@/components/FacebookPage')
-    } catch (err) {
-      console.error(err)
-    }
-    return facebook
-  },
-  { ssr: false }
-)
 
 /**
  * Hexo主题右侧栏
@@ -33,8 +21,16 @@ const FaceBookPage = dynamic(
  */
 export default function SideRight(props) {
   const {
-    post, currentCategory, categories, latestPosts, tags,
-    currentTag, showCategory, showTag, rightAreaSlot, notice
+    post,
+    currentCategory,
+    categories,
+    latestPosts,
+    tags,
+    currentTag,
+    showCategory,
+    showTag,
+    rightAreaSlot,
+    notice
   } = props
 
   const { locale } = useGlobal()
@@ -59,24 +55,27 @@ export default function SideRight(props) {
           <TagGroups tags={tags} currentTag={currentTag} />
         </Card>
       )}
-      {CONFIG.WIDGET_LATEST_POSTS && latestPosts && latestPosts.length > 0 && <Card>
-        <LatestPostsGroup {...props} />
-      </Card>}
+      {CONFIG.WIDGET_LATEST_POSTS && latestPosts && latestPosts.length > 0 && (
+        <Card>
+          <LatestPostsGroup {...props} />
+        </Card>
+      )}
 
-      <Announcement post={notice}/>
+      <Announcement post={notice} />
 
-      {siteConfig('COMMENT_WALINE_SERVER_URL') && siteConfig('COMMENT_WALINE_RECENT') && <HexoRecentComments/>}
+      {siteConfig('COMMENT_WALINE_SERVER_URL') &&
+        siteConfig('COMMENT_WALINE_RECENT') && <HexoRecentComments />}
 
       <div className='sticky top-20'>
-        {post && post.toc && post.toc.length > 1 && <Card>
-          <Catalog toc={post.toc} />
-        </Card>}
+        {post && post.toc && post.toc.length > 1 && (
+          <Card>
+            <Catalog toc={post.toc} />
+          </Card>
+        )}
 
         {rightAreaSlot}
-        <FaceBookPage/>
         <Live2D />
       </div>
-
     </div>
   )
 }

@@ -164,15 +164,6 @@ nav {
   margin: -0.125em 0.25em;
 }
 
-/* twikoo 评论区超链接样式 */
-.tk-main a {
-  @apply text-blue-700;
-}
-
-/* twikoo 内置的 element-ui 加载样式 */
-.el-loading-spinner {
-  @apply flex justify-center items-center;
-}
 
 /* Webmention style */
 .webmention-block {
@@ -271,13 +262,6 @@ a.avatar-wrapper {
   text-orientation: upright; /* 文字方向正常 */
 }
 
-/* Chatbase 在移动端禁止遮挡 */
-@media (max-width: 700px) {
-  button#chatbase-bubble-button {
-    margin-bottom: 42px;
-    margin-right: 20px;
-  }
-}
 
 img {
   display: unset;

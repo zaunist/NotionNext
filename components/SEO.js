@@ -15,9 +15,7 @@ const SEO = props => {
   const PATH = siteConfig('PATH')
   const LINK = siteConfig('LINK')
   const SUB_PATH = siteConfig('SUB_PATH', '')
-  let url = PATH?.length
-    ? `${LINK}/${SUB_PATH}`
-    : LINK
+  let url = PATH?.length ? `${LINK}/${SUB_PATH}` : LINK
   let image
   const router = useRouter()
   const meta = getSEOMeta(props, router, useGlobal()?.locale)
@@ -61,12 +59,6 @@ const SEO = props => {
   const favicon = siteConfig('BLOG_FAVICON')
   const BACKGROUND_DARK = siteConfig('BACKGROUND_DARK', '', NOTION_CONFIG)
 
-  const SEO_BAIDU_SITE_VERIFICATION = siteConfig(
-    'SEO_BAIDU_SITE_VERIFICATION',
-    null,
-    NOTION_CONFIG
-  )
-
   const SEO_GOOGLE_SITE_VERIFICATION = siteConfig(
     'SEO_GOOGLE_SITE_VERIFICATION',
     null,
@@ -91,17 +83,11 @@ const SEO = props => {
     null,
     NOTION_CONFIG
   )
-  const ANALYTICS_BUSUANZI_ENABLE = siteConfig(
-    'ANALYTICS_BUSUANZI_ENABLE',
-    null,
-    NOTION_CONFIG
-  )
-
-  const FACEBOOK_PAGE = siteConfig('FACEBOOK_PAGE', null, NOTION_CONFIG)
 
   const AUTHOR = siteConfig('AUTHOR')
   return (
     <Head>
+      <meta charSet='UTF-8' />
       <link rel='icon' href={favicon} />
       <title>{title}</title>
       <meta name='theme-color' content={BACKGROUND_DARK} />
@@ -110,17 +96,10 @@ const SEO = props => {
         content='width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0'
       />
       <meta name='robots' content='follow, index' />
-      <meta charSet='UTF-8' />
       {SEO_GOOGLE_SITE_VERIFICATION && (
         <meta
           name='google-site-verification'
           content={SEO_GOOGLE_SITE_VERIFICATION}
-        />
-      )}
-      {SEO_BAIDU_SITE_VERIFICATION && (
-        <meta
-          name='baidu-site-verification'
-          content={SEO_BAIDU_SITE_VERIFICATION}
         />
       )}
       <meta name='keywords' content={keywords} />
@@ -154,15 +133,11 @@ const SEO = props => {
         </>
       )}
 
-      {ANALYTICS_BUSUANZI_ENABLE && (
-        <meta name='referrer' content='no-referrer-when-downgrade' />
-      )}
       {meta?.type === 'Post' && (
         <>
           <meta property='article:published_time' content={meta.publishDay} />
           <meta property='article:author' content={AUTHOR} />
           <meta property='article:section' content={category} />
-          <meta property='article:publisher' content={FACEBOOK_PAGE} />
         </>
       )}
       {children}
