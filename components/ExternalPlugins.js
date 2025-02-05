@@ -7,9 +7,6 @@ import { useEffect } from 'react'
 import { GlobalStyle } from './GlobalStyle'
 import { initGoogleAdsense } from './GoogleAdsense'
 
-import Head from 'next/head'
-import ExternalScript from './ExternalScript'
-
 /**
  * 各种插件脚本
  * @param {*} props
@@ -18,15 +15,12 @@ import ExternalScript from './ExternalScript'
 const ExternalPlugin = props => {
   const DISABLE_PLUGIN = siteConfig('DISABLE_PLUGIN')
   const THEME_SWITCH = siteConfig('THEME_SWITCH')
-  const ANALYTICS_ACKEE_TRACKER = siteConfig('ANALYTICS_ACKEE_TRACKER')
   const ANALYTICS_VERCEL = siteConfig('ANALYTICS_VERCEL')
   const ADSENSE_GOOGLE_ID = siteConfig('ADSENSE_GOOGLE_ID')
 
   const FIREWORKS = siteConfig('FIREWORKS')
-  const STARRY_SKY = siteConfig('STARRY_SKY')
   const NEST = siteConfig('NEST')
   const FLUTTERINGRIBBON = siteConfig('FLUTTERINGRIBBON')
-  const RIBBON = siteConfig('RIBBON')
   const CAN_COPY = siteConfig('CAN_COPY')
   const ANALYTICS_GOOGLE_ID = siteConfig('ANALYTICS_GOOGLE_ID')
   const GLOBAL_JS = siteConfig('GLOBAL_JS', '')
@@ -104,7 +98,6 @@ const ExternalPlugin = props => {
       {FIREWORKS && <Fireworks />}
       {NEST && <Nest />}
       {FLUTTERINGRIBBON && <FlutteringRibbon />}
-      {RIBBON && <Ribbon />}
       {!CAN_COPY && <DisableCopy />}
       {ENABLE_NPROGRSS && <LoadingProgress />}
       <AosAnimation />
@@ -172,7 +165,6 @@ const FlutteringRibbon = dynamic(
   () => import('@/components/FlutteringRibbon'),
   { ssr: false }
 )
-const Ribbon = dynamic(() => import('@/components/Ribbon'), { ssr: false })
 
 const Analytics = dynamic(
   () =>

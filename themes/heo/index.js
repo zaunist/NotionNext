@@ -301,7 +301,9 @@ const LayoutSlug = props => {
               {/* Notion文章主体 */}
               <section
                 className='wow fadeInUp p-5 justify-center mx-auto'
-                data-wow-delay='.2s'></section>
+                data-wow-delay='.2s'>
+                {post && <NotionPage post={post} />}
+              </section>
 
               {/* 上一篇\下一篇文章 */}
               <PostAdjacent {...props} />

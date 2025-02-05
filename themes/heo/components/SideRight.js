@@ -1,4 +1,3 @@
-import Live2D from '@/components/Live2D'
 import { AnalyticsCard } from './AnalyticsCard'
 import Card from './Card'
 import Catalog from './Catalog'
@@ -38,8 +37,6 @@ export default function SideRight(props) {
         </div>
 
         {rightAreaSlot}
-
-        <Live2D />
 
         {/* 标签和成绩 */}
         <Card

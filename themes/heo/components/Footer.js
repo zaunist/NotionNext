@@ -1,14 +1,11 @@
-import { BeiAnGongAn } from '@/components/BeiAnGongAn'
 import CopyRightDate from '@/components/CopyRightDate'
 import PoweredBy from '@/components/PoweredBy'
-import { siteConfig } from '@/lib/config'
 import SocialButton from './SocialButton'
 /**
  * 页脚
  * @returns
  */
 const Footer = () => {
-  const BEI_AN = siteConfig('BEI_AN')
   return (
     <footer className='relative flex-shrink-0 bg-white dark:bg-[#1a191d] justify-center text-center m-auto w-full leading-6  text-gray-600 dark:text-gray-100 text-sm'>
       {/* 颜色过度区 */}
@@ -34,16 +31,6 @@ const Footer = () => {
         </div>
 
         <div id='footer-bottom-right'>
-          {BEI_AN && (
-            <>
-              <i className='fas fa-shield-alt' />{' '}
-              <a href='https://beian.miit.gov.cn/' className='mr-2'>
-                {siteConfig('BEI_AN')}
-              </a>
-            </>
-          )}
-          <BeiAnGongAn />
-
           <span className='hidden busuanzi_container_site_pv'>
             <i className='fas fa-eye' />
             <span className='px-1 busuanzi_value_site_pv'> </span>{' '}
