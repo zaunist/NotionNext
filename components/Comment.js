@@ -81,17 +81,10 @@ const Comment = ({ frontMatter, className }) => {
         </div>
       )}
 
-      {shouldLoad && (
-        <Tabs>
-          {COMMENT_UTTERRANCES_REPO && (
-            <div key='Utterance'>
-              <UtterancesComponent
-                issueTerm={frontMatter.id}
-                className='px-2'
-              />
-            </div>
-          )}
-        </Tabs>
+      {shouldLoad && COMMENT_UTTERRANCES_REPO && (
+        <div key='Utterance'>
+          <UtterancesComponent issueTerm={frontMatter.id} className='px-2' />
+        </div>
       )}
     </div>
   )
