@@ -14,7 +14,6 @@ import LoadingCover from '@/components/LoadingCover'
 import replaceSearchResult from '@/components/Mark'
 import NotionPage from '@/components/NotionPage'
 import ShareBar from '@/components/ShareBar'
-import WWAds from '@/components/WWAds'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { loadWowJS } from '@/lib/plugins/wow'
@@ -42,7 +41,6 @@ import SearchNav from './components/SearchNav'
 import SideRight from './components/SideRight'
 import CONFIG from './config'
 import { Style } from './style'
-import AISummary from '@/components/AISummary'
 
 /**
  * 基础布局 采用上中下布局，移动端使用顶部侧边导航栏
@@ -272,21 +270,18 @@ const LayoutSlug = props => {
   useEffect(() => {
     // 404
     if (!post) {
-      setTimeout(
-        () => {
-          if (isBrowser) {
-            const article = document.querySelector(
-              '#article-wrapper #notion-article'
-            )
-            if (!article) {
-              router.push('/404').then(() => {
-                console.warn('找不到页面', router.asPath)
-              })
-            }
+      setTimeout(() => {
+        if (isBrowser) {
+          const article = document.querySelector(
+            '#article-wrapper #notion-article'
+          )
+          if (!article) {
+            router.push('/404').then(() => {
+              console.warn('找不到页面', router.asPath)
+            })
           }
-        },
-        waiting404
-      )
+        }
+      }, waiting404)
     }
   }, [post])
   return (
@@ -306,12 +301,7 @@ const LayoutSlug = props => {
               {/* Notion文章主体 */}
               <section
                 className='wow fadeInUp p-5 justify-center mx-auto'
-                data-wow-delay='.2s'>
-                <AISummary aiSummary={post.aiSummary}/>
-                <WWAds orientation='horizontal' className='w-full' />
-                {post && <NotionPage post={post} />}
-                <WWAds orientation='horizontal' className='w-full' />
-              </section>
+                data-wow-delay='.2s'></section>
 
               {/* 上一篇\下一篇文章 */}
               <PostAdjacent {...props} />

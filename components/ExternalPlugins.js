@@ -9,7 +9,6 @@ import { initGoogleAdsense } from './GoogleAdsense'
 
 import Head from 'next/head'
 import ExternalScript from './ExternalScript'
-import WebWhiz from './Webwhiz'
 
 /**
  * 各种插件脚本
@@ -19,27 +18,17 @@ import WebWhiz from './Webwhiz'
 const ExternalPlugin = props => {
   const DISABLE_PLUGIN = siteConfig('DISABLE_PLUGIN')
   const THEME_SWITCH = siteConfig('THEME_SWITCH')
-  const DEBUG = siteConfig('DEBUG')
   const ANALYTICS_ACKEE_TRACKER = siteConfig('ANALYTICS_ACKEE_TRACKER')
   const ANALYTICS_VERCEL = siteConfig('ANALYTICS_VERCEL')
-  const ANALYTICS_BUSUANZI_ENABLE = siteConfig('ANALYTICS_BUSUANZI_ENABLE')
   const ADSENSE_GOOGLE_ID = siteConfig('ADSENSE_GOOGLE_ID')
 
   const FIREWORKS = siteConfig('FIREWORKS')
   const STARRY_SKY = siteConfig('STARRY_SKY')
-  const MUSIC_PLAYER = siteConfig('MUSIC_PLAYER')
   const NEST = siteConfig('NEST')
   const FLUTTERINGRIBBON = siteConfig('FLUTTERINGRIBBON')
   const RIBBON = siteConfig('RIBBON')
-  const CUSTOM_RIGHT_CLICK_CONTEXT_MENU = siteConfig(
-    'CUSTOM_RIGHT_CLICK_CONTEXT_MENU'
-  )
   const CAN_COPY = siteConfig('CAN_COPY')
-  const WEB_WHIZ_ENABLED = siteConfig('WEB_WHIZ_ENABLED')
-  const AD_WWADS_BLOCK_DETECT = siteConfig('AD_WWADS_BLOCK_DETECT')
-  const AD_WWADS_ID = siteConfig('AD_WWADS_ID')
   const ANALYTICS_GOOGLE_ID = siteConfig('ANALYTICS_GOOGLE_ID')
-  const DIFY_CHATBOT_ENABLED = siteConfig('DIFY_CHATBOT_ENABLED')
   const GLOBAL_JS = siteConfig('GLOBAL_JS', '')
   const CLARITY_ID = siteConfig('CLARITY_ID')
   const IMG_SHADOW = siteConfig('IMG_SHADOW')
@@ -110,15 +99,12 @@ const ExternalPlugin = props => {
       {/* 全局样式嵌入 */}
       <GlobalStyle />
       {THEME_SWITCH && <ThemeSwitch />}
-      {ANALYTICS_ACKEE_TRACKER && <Ackee />}
       {ANALYTICS_GOOGLE_ID && <Gtag />}
       {ANALYTICS_VERCEL && <Analytics />}
       {FIREWORKS && <Fireworks />}
-      {STARRY_SKY && <StarrySky />}
       {NEST && <Nest />}
       {FLUTTERINGRIBBON && <FlutteringRibbon />}
       {RIBBON && <Ribbon />}
-      {CUSTOM_RIGHT_CLICK_CONTEXT_MENU && <CustomContextMenu {...props} />}
       {!CAN_COPY && <DisableCopy />}
       {ENABLE_NPROGRSS && <LoadingProgress />}
       <AosAnimation />
@@ -145,19 +131,6 @@ const ExternalPlugin = props => {
                 })(window, document, "clarity", "script", "${CLARITY_ID}");
                 `
             }}
-          />
-        </>
-      )}
-
-      {AD_WWADS_ID && (
-        <>
-          <Head>
-            {/* 提前连接到广告服务器 */}
-            <link rel='preconnect' href='https://cdn.wwads.cn' />
-          </Head>
-          <ExternalScript
-            type='text/javascript'
-            src='https://cdn.wwads.cn/js/makemoney.js'
           />
         </>
       )}
@@ -200,9 +173,7 @@ const FlutteringRibbon = dynamic(
   { ssr: false }
 )
 const Ribbon = dynamic(() => import('@/components/Ribbon'), { ssr: false })
-const StarrySky = dynamic(() => import('@/components/StarrySky'), {
-  ssr: false
-})
+
 const Analytics = dynamic(
   () =>
     import('@vercel/analytics/react').then(async m => {
@@ -210,12 +181,7 @@ const Analytics = dynamic(
     }),
   { ssr: false }
 )
-const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
-const CustomContextMenu = dynamic(
-  () => import('@/components/CustomContextMenu'),
-  { ssr: false }
-)
 const DisableCopy = dynamic(() => import('@/components/DisableCopy'), {
   ssr: false
 })

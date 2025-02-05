@@ -88,6 +88,10 @@ const SEO = props => {
   return (
     <Head>
       <meta charSet='UTF-8' />
+      <script
+        src='https://analytics.ahrefs.com/analytics.js'
+        data-key='21jbIClGy3fg+ZpVlC4k2w'
+        async></script>
       <link rel='icon' href={favicon} />
       <title>{title}</title>
       <meta name='theme-color' content={BACKGROUND_DARK} />
